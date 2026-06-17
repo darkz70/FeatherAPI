@@ -18,8 +18,8 @@ maven {
 name = "FeatherPlugin GitHub Packages"
 url = uri("https://maven.pkg.github.com/darkz70/FeatherPlugin")
 credentials {
-username = System.getenv("GITHUB_ACTOR")
-password = System.getenv("GITHUB_TOKEN")
+username = System.getenv("GITHUB_ACTOR") ?: "darkz70"
+password = System.getenv("GITHUB_TOKEN") ?: ""
 }
 }
 }
@@ -50,8 +50,8 @@ maven {
 name = "FeatherPlugin GitHub Packages"
 url = uri("https://maven.pkg.github.com/darkz70/FeatherPlugin")
 credentials {
-username = System.getenv("GITHUB_ACTOR")
-password = System.getenv("GITHUB_TOKEN")
+username = System.getenv("GITHUB_ACTOR") ?: "darkz70"
+password = System.getenv("GITHUB_TOKEN") ?: ""
 }
 }
 }
