@@ -1,0 +1,17 @@
+{
+	"required": true,
+	"package": "net.darkz.featherapi.mixin.yacl",
+	"plugin": "net.darkz.featherapi.compat.yacl.YACLCompatPlugin",
+	"refmap": "${mod_id}.refmap.json",
+	"compatibilityLevel": "JAVA_${java}",
+	"mixins": [],
+	"client": [
+		"AbstractWidgetMixin",
+		"YetAnotherConfigLibImplBuilderMixin",
+		"YetAnotherConfigLibImplMixin",
+		"SearchFieldWidgetMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	}
+}

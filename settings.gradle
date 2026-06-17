@@ -1,0 +1,73 @@
+pluginManagement {
+repositories {
+mavenCentral()
+gradlePluginPortal()
+maven {
+name "Fabric"
+url "https://maven.fabricmc.net/"
+}
+maven {
+name "Quilt"
+url "https://maven.quiltmc.org/repository/release"
+}
+maven {
+name "Kiku Releases"
+url "https://maven.kikugie.dev/releases"
+}
+maven {
+name = "FeatherPlugin GitHub Packages"
+url = uri("https://maven.pkg.github.com/darkz70/FeatherPlugin")
+credentials {
+username = System.getenv("GITHUB_ACTOR")
+password = System.getenv("GITHUB_TOKEN")
+}
+}
+}
+}
+
+plugins {
+id "dev.kikugie.stonecutter" version "0.9"
+id "net.darkz.feather.feather-settings" version "1.2.3-SNAPSHOT"
+id "org.gradle.toolchains.foojay-resolver-convention" version "1.0.0"
+}
+
+dependencyResolutionManagement {
+repositories {
+mavenCentral()
+maven {
+name "Fabric"
+url "https://maven.fabricmc.net/"
+}
+maven {
+name "Quilt"
+url "https://maven.quiltmc.org/repository/release"
+}
+maven {
+name "Kiku Releases"
+url "https://maven.kikugie.dev/releases"
+}
+maven {
+name = "FeatherPlugin GitHub Packages"
+url = uri("https://maven.pkg.github.com/darkz70/FeatherPlugin")
+credentials {
+username = System.getenv("GITHUB_ACTOR")
+password = System.getenv("GITHUB_TOKEN")
+}
+}
+}
+}
+
+stonecutter {
+centralScript = "build.gradle"
+shared {
+vers("fabric-1.20.1", "fabric-1.20.1")
+vers("fabric-1.21.1", "fabric-1.21.1")
+vers("fabric-1.21.4", "fabric-1.21.4")
+vers("fabric-1.21.5", "fabric-1.21.5")
+vers("fabric-1.21.8", "fabric-1.21.8")
+vers("fabric-1.21.10", "fabric-1.21.10")
+vers("fabric-1.21.11", "fabric-1.21.11")
+vers("fabric-26.1", "fabric-26.1")
+}
+create rootProject
+}

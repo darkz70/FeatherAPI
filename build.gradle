@@ -1,0 +1,52 @@
+plugins {
+id "net.darkz.feather.feather-core" version "1.2.3-SNAPSHOT"
+id "net.darkz.feather.feather-loader" version "1.2.3-SNAPSHOT"
+id "net.darkz.feather.feather-stonecutter" version "1.2.3-SNAPSHOT"
+id "maven-publish"
+}
+
+feather {
+loader           = stonecutter.current.project.substring(0, stonecutter.current.project.indexOf("-"))
+minecraftVersion = stonecutter.current.project.substring(stonecutter.current.project.indexOf("-") + 1)
+loaderVersion    = prop("build.fabric_loader")
+lombok           = prop("base.lombok_version")
+fabricApi        = prop("build.fabric_api")
+
+additional {
+// Example: disable("cit-resewn")
+}
+}
+
+stonecutter {
+replacements.string(current.parsed >= "26.1") {
+replace("net.minecraft.client.gui.GuiGraphics", "net.minecraft.client.gui.GuiGraphicsExtractor")
+replace("GuiGraphics", "GuiGraphicsExtractor")
+}
+}
+
+publishing {
+repositories {
+maven {
+name = "GitHubPackages"
+url  = uri("https://maven.pkg.github.com/darkz70/FeatherAPI")
+credentials {
+username = System.getenv("GITHUB_ACTOR")
+password = System.getenv("GITHUB_TOKEN")
+}
+}
+mavenLocal()
+}
+
+publications {
+featherAPI(MavenPublication) {
+groupId = "${prop("data.mod_maven_group")}"
+artifactId = prop("data.mod_id")
+version = "${prop("data.mod_version")}-${stonecutter.current.project}"
+from components.java
+}
+}
+}
+
+String prop(String key) {
+return findProperty(key).toString()
+}
