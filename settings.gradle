@@ -27,7 +27,7 @@ password = System.getenv("GITHUB_TOKEN") ?: ""
 
 plugins {
 id "dev.kikugie.stonecutter" version "0.9"
-id "net.darkz.feather.feather-settings" version "1.2.3-SNAPSHOT"
+id "net.darkz.feather.feather-settings" version "1.2.4-SNAPSHOT"
 id "org.gradle.toolchains.foojay-resolver-convention" version "1.0.0"
 }
 
