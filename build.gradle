@@ -7,7 +7,8 @@ id "maven-publish"
 
 feather {
 loader           = stonecutter.current.project.substring(0, stonecutter.current.project.indexOf("-"))
-minecraftVersion = stonecutter.current.project.substring(stonecutter.current.project.indexOf("-") + 1)
+mappings = "official"
+	minecraftVersion = stonecutter.current.version.toString()
 loaderVersion    = prop("build.fabric_loader")
 lombok           = prop("base.lombok_version")
 fabricApi        = prop("build.fabric_api")
