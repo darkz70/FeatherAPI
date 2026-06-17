@@ -6,6 +6,8 @@ jobs:
     runs-on: ubuntu-22.04
     env:
       CI: "true"
+      GPR_USER: ${{ github.actor }}
+      GPR_KEY: ${{ secrets.GPR_KEY }}
     strategy:
       fail-fast: false
       matrix:
