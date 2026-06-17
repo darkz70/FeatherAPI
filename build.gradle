@@ -22,6 +22,9 @@ stonecutter {
 replacements.string(current.parsed >= "26.1") {
 replace("net.minecraft.client.gui.GuiGraphics", "net.minecraft.client.gui.GuiGraphicsExtractor")
 replace("GuiGraphics", "GuiGraphicsExtractor")
+t	replacements.string(current.parsed >= "26.2") {
+			replace("net.minecraft.client.renderer.MultiBufferSource", "com.mojang.blaze3d.vertex.MultiBufferSource")
+		}
 }
 }
 

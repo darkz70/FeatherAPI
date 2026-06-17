@@ -68,6 +68,7 @@ vers("fabric-1.21.8", "fabric-1.21.8")
 vers("fabric-1.21.10", "fabric-1.21.10")
 vers("fabric-1.21.11", "fabric-1.21.11")
 vers("fabric-26.1", "fabric-26.1")
+		vers("fabric-26.2", "fabric-26.2")
 }
 create rootProject
 }
