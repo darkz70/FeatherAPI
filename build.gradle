@@ -1,56 +1,53 @@
 plugins {
-id "net.darkz.feather.feather-core" version "1.2.4-SNAPSHOT"
-id "net.darkz.feather.feather-loader" version "1.2.4-SNAPSHOT"
-id "net.darkz.feather.feather-stonecutter" version "1.2.4-SNAPSHOT"
-id "maven-publish"
+	id "net.darkz.feather.feather-core" version "$mossy_plugin_version"
+	id "maven-publish"
 }
 
 feather {
-loader           = stonecutter.current.project.substring(0, stonecutter.current.project.indexOf("-"))
-mappings = "official"
-	minecraftVersion = stonecutter.current.version.toString()
-loaderVersion    = prop("build.fabric_loader")
-lombok           = prop("base.lombok_version")
-fabricApi        = prop("build.fabric_api")
+	minecraft = stonecutter.current.version.toString()
+	mappings = "official"
+	lombok = prop("base.lombok_version")
 
-additional {
-// Example: disable("cit-resewn")
-}
+	fabricApi = prop("build.fabric_api")
+	fabricLoader = prop("build.fabric_loader")
+
+	forge = prop("build.forge")
+
+	neoForge = prop("build.neoforge")
+	parchment = prop("build.parchment")
+
+	additional {
+		//override("modCompileOnly", "yacl")
+	}
 }
 
-stonecutter {
-replacements.string(current.parsed >= "26.1") {
-replace("net.minecraft.client.gui.GuiGraphics", "net.minecraft.client.gui.GuiGraphicsExtractor")
-replace("GuiGraphics", "GuiGraphicsExtractor")
-t	replacements.string(current.parsed >= "26.2") {
-			replace("net.minecraft.client.renderer.MultiBufferSource", "com.mojang.blaze3d.vertex.MultiBufferSource")
-		}
-}
+if (stonecutter.current.project.startsWith("forge")) {
+
 }
 
 publishing {
-repositories {
-maven {
-name = "GitHubPackages"
-url  = uri("https://maven.pkg.github.com/darkz70/FeatherAPI")
-credentials {
-username = System.getenv("GITHUB_ACTOR")
-password = System.getenv("GITHUB_TOKEN")
-}
-}
-mavenLocal()
-}
+	repositories {
+		maven {
+			name = 'MossyProjectsReleases'
+			url = uri('https://maven.lopymine.net/releases')
+			credentials(PasswordCredentials)
+			authentication {
+				create('basic', BasicAuthentication)
+			}
+		}
+		mavenLocal()
+	}
 
-publications {
-featherAPI(MavenPublication) {
-groupId = "${prop("data.mod_maven_group")}"
-artifactId = prop("data.mod_id")
-version = "${prop("data.mod_version")}-${stonecutter.current.project}"
-from components.java
-}
-}
+	publications {
+		mossyPlugin(MavenPublication) {
+			groupId = "${prop("data.mod_maven_group")}"
+			artifactId = prop("data.mod_id")
+			version = "${prop("data.mod_version")}-${stonecutter.current.project}"
+			from components.java
+		}
+	}
 }
 
 String prop(String key) {
-return findProperty(key).toString()
+	return findProperty(key).toString()
 }

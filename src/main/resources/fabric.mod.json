@@ -9,20 +9,20 @@
     ],
     "contact": {
         "homepage": "https://modrinth.com/mod/${mod_id}",
-        "issues": "https://github.com/${github_mod_author}/${mod_id}"
+        "issues": "https://github.com/LopyMine/${mod_id}"
     },
     "license": "${mod_license}",
     "icon": "icon/icon.png",
     "environment": "*",
     "entrypoints": {
         "main": [
-	        "net.darkz.featherapi.entrypoint.FeatherAPIFabricEntrypoint"
+	        "net.lopymine.mossylib.entrypoint.MossyLibFabricEntrypoint"
         ],
         "client": [
-	        "net.darkz.featherapi.entrypoint.FeatherAPIFabricClientEntrypoint"
+	        "net.lopymine.mossylib.entrypoint.MossyLibFabricClientEntrypoint"
         ],
         "modmenu": [
-	        "net.darkz.featherapi.modmenu.TestFeatherAPIModMenuIntegration"
+	        "net.lopymine.mossylib.modmenu.MossyLibModMenuIntegration"
         ]
     },
     "depends": {
@@ -31,7 +31,7 @@
         "java": ">=${java}",
         "${fabric_api_id}": "*"
     },
-    "accessWidener": "${fabric_trick_accesswidener_id}",
+    "accessWidener": "aws/fabric-${minecraft}.accesswidener",
     "mixins": [
         "${fabric_trick_mixin_configs}"
     ],
