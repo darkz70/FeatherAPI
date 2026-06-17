@@ -2,18 +2,22 @@ pluginManagement {
 repositories {
 mavenCentral()
 gradlePluginPortal()
+        mavenLocal()
 maven {
 name "Fabric"
 url "https://maven.fabricmc.net/"
 }
+        mavenLocal()
 maven {
 name "Quilt"
 url "https://maven.quiltmc.org/repository/release"
 }
+        mavenLocal()
 maven {
 name "Kiku Releases"
 url "https://maven.kikugie.dev/releases"
 }
+        mavenLocal()
 maven {
 name = "FeatherPlugin GitHub Packages"
 url = uri("https://maven.pkg.github.com/darkz70/FeatherPlugin")
@@ -27,25 +31,29 @@ password = System.getenv("GITHUB_TOKEN") ?: ""
 
 plugins {
 id "dev.kikugie.stonecutter" version "0.9"
-id "net.darkz.feather.feather-settings" version "1.2.4-SNAPSHOT"
+id "net.darkz.feather.feather-settings" version "1.2.4"
 id "org.gradle.toolchains.foojay-resolver-convention" version "1.0.0"
 }
 
 dependencyResolutionManagement {
 repositories {
 mavenCentral()
+        mavenLocal()
 maven {
 name "Fabric"
 url "https://maven.fabricmc.net/"
 }
+        mavenLocal()
 maven {
 name "Quilt"
 url "https://maven.quiltmc.org/repository/release"
 }
+        mavenLocal()
 maven {
 name "Kiku Releases"
 url "https://maven.kikugie.dev/releases"
 }
+        mavenLocal()
 maven {
 name = "FeatherPlugin GitHub Packages"
 url = uri("https://maven.pkg.github.com/darkz70/FeatherPlugin")
