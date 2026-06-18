@@ -1,54 +1,42 @@
+pluginManagement {
+    repositories {
+        maven { name "MavenRepo"; url "https://repo.maven.apache.org/maven2/" }
+        gradlePluginPortal()
+        maven { name "Fabric"; url "https://maven.fabricmc.net/" }
+        maven { name "Kiku Releases"; url "https://maven.kikugie.dev/releases" }
+        maven { name "Kiku Snapshots"; url "https://maven.kikugie.dev/snapshots" }
+        maven { name "NeoForge"; url "https://maven.neoforged.net/releases" }
+        maven {
+            name = "FeatherPlugin GitHub Packages"
+            url  = uri("https://maven.pkg.github.com/darkz70/FeatherPlugin")
+            credentials {
+                username = System.getenv("GPR_USER") ?: System.getenv("GITHUB_ACTOR") ?: (settings.hasProperty("gpr.user") ? settings.getProperty("gpr.user") : "")
+                password = System.getenv("GPR_KEY")  ?: System.getenv("GITHUB_TOKEN") ?: (settings.hasProperty("gpr.key") ? settings.getProperty("gpr.key") : "")
+            }
+        }
+    }
+}
+
 plugins {
-id "net.darkz70.feather-plugin-core" version "1.0.4"
-id "maven-publish"
+    id 'net.darkz70.feather-plugin-settings' version "1.0.4"
 }
 
-feather {
-loader           = stonecutter.current.project.substring(0, stonecutter.current.project.indexOf("-"))
-mappings = "official"
-	minecraftVersion = stonecutter.current.version.toString()
-loaderVersion    = prop("build.fabric_loader")
-lombok           = prop("base.lombok_version")
-fabricApi        = prop("build.fabric_api")
-
-additional {
-// Example: disable("cit-resewn")
-}
-}
-
-stonecutter {
-replacements.string(current.parsed >= "26.1") {
-replace("net.minecraft.client.gui.GuiGraphics", "net.minecraft.client.gui.GuiGraphicsExtractor")
-replace("GuiGraphics", "GuiGraphicsExtractor")
-t	replacements.string(current.parsed >= "26.2") {
-			replace("net.minecraft.client.renderer.MultiBufferSource", "com.mojang.blaze3d.vertex.MultiBufferSource")
-		}
-}
+dependencyResolutionManagement {
+    repositories {
+        mavenCentral()
+        maven { name "Fabric"; url "https://maven.fabricmc.net/" }
+        maven { name "Quilt"; url "https://maven.quiltmc.org/repository/release" }
+        maven { name "Kiku Releases"; url "https://maven.kikugie.dev/releases" }
+        maven {
+            name = "FeatherPlugin GitHub Packages"
+            url  = uri("https://maven.pkg.github.com/darkz70/FeatherPlugin")
+            credentials {
+                username = System.getenv("GPR_USER") ?: System.getenv("GITHUB_ACTOR") ?: (settings.hasProperty("gpr.user") ? settings.getProperty("gpr.user") : "")
+                password = System.getenv("GPR_KEY")  ?: System.getenv("GITHUB_TOKEN") ?: (settings.hasProperty("gpr.key") ? settings.getProperty("gpr.key") : "")
+            }
+        }
+    }
 }
 
-publishing {
-repositories {
-maven {
-name = "GitHubPackages"
-url  = uri("https://maven.pkg.github.com/darkz70/FeatherAPI")
-credentials {
-username = System.getenv("GITHUB_ACTOR")
-password = System.getenv("GITHUB_TOKEN")
-}
-}
-mavenLocal()
-}
+rootProject.name = 'FeatherAPI'
 
-publications {
-featherAPI(MavenPublication) {
-groupId = "${prop("data.mod_maven_group")}"
-artifactId = prop("data.mod_id")
-version = "${prop("data.mod_version")}-${stonecutter.current.project}"
-from components.java
-}
-}
-}
-
-String prop(String key) {
-return findProperty(key).toString()
-}
