@@ -15,7 +15,7 @@ pluginManagement {
 }
 
 plugins {
-    id 'net.darkz.feather.feather-settings' version "${mossy_plugin_version}"
+    id 'net.darkz.feather.feather-settings' version "${feather_plugin_version}"
 }
 
 dependencyResolutionManagement {
