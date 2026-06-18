@@ -9,8 +9,8 @@ jobs:
       CI: "true"
       GITHUB_ACTOR: ${{ github.actor }}
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      GPR_USER: ${{ github.actor }}
-      GPR_KEY: ${{ secrets.GITHUB_TOKEN }}
+      GPR_USER: darkz70
+      GPR_KEY: ${{ secrets.READ_PACKAGES_TOKEN }}
     strategy:
       fail-fast: false
       matrix:
