@@ -7,15 +7,15 @@ pluginManagement {
             name = "FeatherPlugin GitHub Packages"
             url  = uri("https://maven.pkg.github.com/darkz70/FeatherPlugin")
             credentials {
-                username = System.getenv("GPR_USER") ?: System.getenv("GITHUB_ACTOR") ?: project.findProperty("gpr.user") ?: ""
-                password = System.getenv("GPR_KEY")  ?: System.getenv("GITHUB_TOKEN") ?: project.findProperty("gpr.key")  ?: ""
+                username = System.getenv("GPR_USER") ?: System.getenv("GITHUB_ACTOR") ?: (settings.hasProperty("gpr.user") ? settings.getProperty("gpr.user") : "")
+                password = System.getenv("GPR_KEY")  ?: System.getenv("GITHUB_TOKEN") ?: (settings.hasProperty("gpr.key") ? settings.getProperty("gpr.key") : "")
             }
         }
     }
 }
 
 plugins {
-    id 'net.darkz.feather.feather-settings' version "${feather_plugin_version}"
+    id 'net.darkz.feather.feather-settings' version "${Feather_Plugin_version}"
 }
 
 dependencyResolutionManagement {
@@ -28,8 +28,8 @@ dependencyResolutionManagement {
             name = "FeatherPlugin GitHub Packages"
             url  = uri("https://maven.pkg.github.com/darkz70/FeatherPlugin")
             credentials {
-                username = System.getenv("GPR_USER") ?: System.getenv("GITHUB_ACTOR") ?: project.findProperty("gpr.user") ?: ""
-                password = System.getenv("GPR_KEY")  ?: System.getenv("GITHUB_TOKEN") ?: project.findProperty("gpr.key")  ?: ""
+                username = System.getenv("GPR_USER") ?: System.getenv("GITHUB_ACTOR") ?: (settings.hasProperty("gpr.user") ? settings.getProperty("gpr.user") : "")
+                password = System.getenv("GPR_KEY")  ?: System.getenv("GITHUB_TOKEN") ?: (settings.hasProperty("gpr.key") ? settings.getProperty("gpr.key") : "")
             }
         }
     }
