@@ -1,7 +1,6 @@
 plugins {
-id "net.darkz.feather.feather-core" version "1.0"
-id "net.darkz.feather.feather-loader" version "1.0"
-id "net.darkz.feather.feather-stonecutter" version "1.0"
+id "net.darkz70.feather-plugin-core" version "1.0"
+id "net.darkz70.feather-plugin-stonecutter" version "1.0"
 id "maven-publish"
 }
 
