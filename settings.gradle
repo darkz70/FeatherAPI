@@ -15,7 +15,7 @@ pluginManagement {
 }
 
 plugins {
-    id 'net.darkz.feather.feather-settings' version "${Feather_Plugin_version}"
+    id 'net.darkz70.feather-plugin-settings' version "${Feather_Plugin_version}"
 }
 
 dependencyResolutionManagement {
@@ -52,5 +52,6 @@ featherVersions {
     vers("neoforge-1.21.10", "neoforge-1.21.10")
     vers("neoforge-1.21.11", "neoforge-1.21.11")
     vers("neoforge-26.1", "neoforge-26.1")
+    vers("neoforge-26.2", "neoforge-26.2")
     vers("forge-1.20.1", "forge-1.20.1")
 }
